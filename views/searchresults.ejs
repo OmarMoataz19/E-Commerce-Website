@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+
+        .container{
+            display: flex;
+          align-items: center;
+          justify-content: center;
+          justify-content: space-around;
+          margin-top: 70px;
+        }
+        .iphone {
+            color: white;
+            display: none;
+        }
+        .galaxy {
+           
+            color: white;
+            display: none;
+        
+        }
+        .leaves {
+            
+            color: white;
+            display: none;
+        }
+        .sun {
+            color: white;
+            display: none;
+        }
+        .boxing {
+            color: white;
+            display: none;
+        }
+        .tennis {
+            color: white;
+            display: none;
+        }
+
+        .notfound {
+            display: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <h3 style="justify-content: center; color: rgb(255, 255, 255); position:relative;">
+        
+    </h3>
+    <div id="item" style="display: none;"><%= alert %></div>
+    <h3 style="justify-content: center; color: rgb(219, 35, 35); position:relative; display: none;" class = "notfound">Item is not found</h3>
+<div class="container">
+    <div class="iphone">
+        <img id="image" src="/iphone.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">iPhone 13 Pro</label>
+        <br>
+        <button onclick="location.href = '/iphone';" id="iphone" class="btn btn-secondary ml-3"> View </button>
+    </div>
+
+    <div class="galaxy">
+        <img id="image" src="/galaxy.jpg" width="193" height="300">
+        <br>
+        <label id="label1" class="ml-4 my-2">Galaxy S21 Ultra</label>
+        <br>
+        <button onclick="location.href = '/galaxy';" id="galaxy" class="btn btn-secondary ml-3"> View </button>
+    </div>
+    <div class="leaves">
+        <img id="image" src="/leaves.jpg" width="193" height="300">
+        <br>
+        <label id="label1" class="ml-4 my-2">Leaves of Grass</label>
+        <br>
+        <button onclick="location.href = '/leaves';" id="leaves" class="btn btn-secondary ml-3"> View </button>
+    </div>
+    <div class="sun">
+        <img id="image" src="/sun.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">The Sun and Her Flowers</label>
+        <br>
+        <button onclick="location.href = '/sun';" id="sun" class="btn btn-secondary ml-3"> View </button>
+    </div>
+    <div class="boxing">
+        <img id="image" src="/boxing.jpg" width="193" height="300">
+        <br>
+        <label id="label1" class="ml-4 my-2">Boxing Bag</label>
+        <br>
+        <button onclick="location.href = '/boxing';" id="boxing" class="btn btn-secondary ml-3"> View </button>
+    </div>
+    <div class="tennis">
+        <img id="image" src="/tennis.jpg" width="193" height="300">
+        <br>
+        <label id ="label2" class="ml-4 my-2">Tennis Racket</label>
+        <br>
+        <button onclick="location.href = '/tennis';" id="tennis" class="btn btn-secondary ml-3"> View </button>
+    </div>
+</div>
+    <script type=text/javascript>
+        var item = document.getElementById('item').innerHTML;
+       var allItems = ['galaxy s21 ultra', 'iphone 13 pro', 'leaves of grass', 'the sun and her flowers', 'boxing bag', 'tennis racket'];
+       var flag = false;
+        if(allItems[0].includes(item.toLowerCase())) {
+            document.getElementsByClassName('galaxy')[0].style.display = "block";
+            flag = true;
+        }
+        if(allItems[1].includes(item.toLowerCase())) {
+             document.getElementsByClassName('iphone')[0].style.display = "block";
+             flag = true;
+        }
+        if(allItems[2].includes(item.toLowerCase())) {
+             document.getElementsByClassName('leaves')[0].style.display = "block";
+             flag = true;
+        }
+        if(allItems[3].includes(item.toLowerCase())) {
+             document.getElementsByClassName('sun')[0].style.display = "block";
+             flag = true;
+        }
+        if(allItems[4].includes(item.toLowerCase())) {
+             document.getElementsByClassName('boxing')[0].style.display = "block";
+             flag = true;
+        }
+        if(allItems[5].includes(item.toLowerCase())) {
+             document.getElementsByClassName('tennis')[0].style.display = "block";
+             flag = true;
+        }
+        if(!flag) {
+            document.getElementsByClassName('notfound')[0].style.display = "block";           
+        }
+
+    </script>
+
+    </script>
+    <form method='post' action='/backsearch'>
+        <input type="submit" id="simple_click" class="btn btn-secondary" value="Back"> <br>
+    </form>
+</body>
+</html>
