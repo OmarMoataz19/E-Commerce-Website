@@ -30,10 +30,10 @@ connection.once('open' , () =>{
 })
 //---------------------------------------------
 
-app.listen(port , ()=>{
-    console.log('server is running on port :${port}')
+//app.listen(port , ()=>{
+//    console.log('server is running on port :${port}')
 
-});
+//});
 // Here Hanebda2 el forntend code beta3 el views
 app.set(path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
