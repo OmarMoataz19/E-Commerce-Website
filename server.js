@@ -8,8 +8,6 @@ require ('dotenv').config();
 const app= express();
 
 app.use(session({secret:'oncart'}));
-//const port =process.env.PORT||5000;
-//to be able to read json and input/output fel database 
 app.use(cors());
 var bodyParser= require('body-parser');
 app.use(bodyParser.json())
@@ -30,10 +28,6 @@ connection.once('open' , () =>{
 })
 //---------------------------------------------
 
-//app.listen(port , ()=>{
-//    console.log('server is running on port :${port}')
-
-//});
 // Here Hanebda2 el forntend code beta3 el views
 app.set(path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -80,10 +74,12 @@ async function findUsernamePassword(Client,userName,Password) {
 //------------------------------------------------------------------------------------------------------------------------
 //for rendering the login page and handling the login button---
 app.get('/',function (req,res){         
+    sess=undefined;
     res.render('login', { alert: "" });
 });
 
 app.get('/', function(req, res) {
+    sess=undefined;//
     var passedVariable = req.query.alert;
     res.render('login', { alert: passedVariable })
 });
@@ -126,7 +122,6 @@ app.post('/register',async function(req,res){
     found =  await findUsername(Client,username)
     if(!found){
             insertUser(Client,username,password)
-            //res.redirect('/?alert=Registration is Successful.');
             res.send('<script>alert("you have registered successfully"); window.location.href = "/"; </script>');
     }
     else    
