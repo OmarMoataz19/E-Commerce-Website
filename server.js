@@ -74,12 +74,10 @@ async function findUsernamePassword(Client,userName,Password) {
 //------------------------------------------------------------------------------------------------------------------------
 //for rendering the login page and handling the login button---
 app.get('/',function (req,res){         
-    sess=undefined;
     res.render('login', { alert: "" });
 });
 
 app.get('/', function(req, res) {
-    sess=undefined;//
     var passedVariable = req.query.alert;
     res.render('login', { alert: passedVariable })
 });
