@@ -73,18 +73,20 @@ async function findUsernamePassword(Client,userName,Password) {
     
 //------------------------------------------------------------------------------------------------------------------------
 //for rendering the login page and handling the login button---
-app.get('/',function (req,res){         
+app.get('/',function (req,res){
+    sess=undefined         
     res.render('login', { alert: "" });
 });
 
 app.get('/', function(req, res) {
+    sess=undefined
     var passedVariable = req.query.alert;
     res.render('login', { alert: passedVariable })
 });
 
 app.post('/', async function (req,res){
     await Client.connect()
-    sess=req.session;
+    
     
     var inputuserName= req.body.username
     var inputpassword= req.body.password
@@ -94,6 +96,7 @@ app.post('/', async function (req,res){
     } else {
    var found= await findUsernamePassword(Client,inputuserName,inputpassword)
     if(found){
+        sess=req.session;
         sess.username=inputuserName;
         res.redirect('home')
        
