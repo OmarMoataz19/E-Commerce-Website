@@ -28,13 +28,10 @@ connection.once('open' , () =>{
 })
 //---------------------------------------------
 
-// Here Hanebda2 el forntend code beta3 el views
 app.set(path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //-------------------------------------------------
-
-//here connecting el sowar wel videos( el hagat el static)//
 
 app.use(express.static(path.join(__dirname,'public')));
 
